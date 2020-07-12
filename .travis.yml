@@ -19,12 +19,13 @@ install:
 script:
   - sudo vagrant up --provider=libvirt
   
+  - sleep 6m
+  
   - sudo vagrant ssh -c ". activate && ls /opt"
   - sudo vagrant ssh -c ". activate && ls /opt/tildes"
   - sudo vagrant ssh -c ". activate && ls /opt/tildes/static"
   - sudo vagrant ssh -c ". activate && ls /opt/tildes/static/css"
-  
-  - sleep 60s
+  - sudo vagrant ssh -c ". activate && ls /opt/tildes/static/images"
   
   - sudo vagrant ssh -c ". activate && pytest"
   - sudo vagrant ssh -c ". activate && mypy ."
