@@ -19,7 +19,8 @@ install:
 script:
   - sudo vagrant up --provider=libvirt
   
-  - sleep 6m
+  # Not sure why this isn't triggering automatically, but let's see if this works
+  - sudo vagrant ssh -c ". activate && /opt/venvs/tildes/bin/python -c 'from scripts.generate_site_icons_css import generate_css; generate_css()'"
   
   - sudo vagrant ssh -c ". activate && ls /opt"
   - sudo vagrant ssh -c ". activate && ls /opt/tildes"
